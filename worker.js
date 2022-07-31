@@ -135,12 +135,18 @@ addEventListener('fetch', event => {
 
   // if (url == "https://f-test-cf.tomgsmith.com/") {}
 
-  if (url.includes('form')) {
-    return event.respondWith(rawHtmlResponse(someForm));
+  if (url == "https://f-test-cf.tomgsmith.com/login-1") {}
+
+  else {
+
+    if (url.includes('form')) {
+      return event.respondWith(rawHtmlResponse(someForm));
+    }
+    if (request.method === 'POST') {
+      return event.respondWith(handleRequest(request));
+    } else if (request.method === 'GET') {
+      return event.respondWith(new Response(`The request was a GET`));
+    }
   }
-  if (request.method === 'POST') {
-    return event.respondWith(handleRequest(request));
-  } else if (request.method === 'GET') {
-    return event.respondWith(new Response(`The request was a GET`));
-  }
+
 });
