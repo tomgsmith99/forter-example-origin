@@ -47,6 +47,7 @@ app.get('/favicon.ico', (req, res) => {
 })
 
 app.get('/', (req, res) => {
+	obj = {}
 	res.render ('index.html', obj)
 })
 
