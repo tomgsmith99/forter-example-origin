@@ -23,46 +23,29 @@
     <p>the use-case is: {{use_case}}</p>
 
   <h1>Forter + Cloudflare examples</h1>
-  <form action="/demos/requests" method="post">
-    <div>
-      <label for="username">username</label>
-      <input name="username" id="username" value="lois.lane">
-    </div>
-    <div>
-      <label for="to">password</label>
-      <input name="password" id="password" value="qwerty">
-    </div>
-    <div style='margin-top: 20px'>
-      <button>log in</button>
-    </div>
-  </form>
 
+  <h2>Sign in</h2>
 
-<div id="login_form">
+  <div id="login_form">
 
-    <div class="col-span-2 flex justify-between items-center">
-        <h1 class="text-xl font-bold">Sign In</h1>
+      <label class="block space-y-2 col-span-2">
+          <span class="block font-bold">username</span>
 
-    </div>
+          <input type="email" id="email">
+      </label>
 
-    <label class="block space-y-2 col-span-2">
-        <span class="block font-bold">username</span>
+      <br>
 
-        <input type="email" id="email">
-    </label>
+      <label class="block space-y-2 col-span-2">
+          <span class="block font-bold">Password</span>
 
-    <br>
+          <input name="password" autocomplete="off">
+      </label>
 
-    <label class="block space-y-2 col-span-2">
-        <span class="block font-bold">Password</span>
+      <br>
 
-        <input name="password" autocomplete="off">
-    </label>
-
-    <br>
-
-    <button type="button" class="btn col-span-2" onclick="login()">log in</button>
-</div>
+      <button type="button" class="btn col-span-2" onclick="login()">log in</button>
+  </div>
 
   <script type="text/javascript" id="{{FORTER_SITE_ID}}">
       (function () {
