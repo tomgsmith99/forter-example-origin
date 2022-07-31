@@ -27,56 +27,43 @@
 
         console.log(username)
 
-        // $("#login_error").hide()
+        $.post(
+            "/login", {
+                username: username,
+                forter_token: localStorage.getItem("forter_token")
+        })
+        .done(function( data ) {
 
-        // if (user.use_case == "profile") {
+            console.log("response:")
 
-        //     $("#login_form").hide()
+            // console.dir(data)
 
-        //     $("#welcome_login_username").html(user.first_name)
+            // $("#login_form").hide()
 
-        //     $("#login_success").show()
-        // }
-        // else {
-        //     $.post(
-        //         "/login", {
-        //             email: email,
-        //             password: password,
-        //             forter_token: localStorage.getItem("forter_token"),
-        //             use_case_detail: user.use_case_detail
-        //     })
-        //     .done(function( data ) {
+            // if (data.error) {
+            //     $("#login_error").show()
+            // }
+            // else {
 
-        //         console.log("response:")
+            //     if (data.forter_decision == "APPROVE") {
 
-        //         console.dir(data)
+            //         $("#welcome_login_username").html(user.first_name)
 
-        //         $("#login_form").hide()
+            //         $("#login_success").show()
 
-        //         if (data.error) {
-        //             $("#login_error").show()
-        //         }
-        //         else {
-
-        //             if (data.forter_decision == "APPROVE") {
-
-        //                 $("#welcome_login_username").html(user.first_name)
-
-        //                 $("#login_success").show()
-
-        //                 $("#forter_decision_approve").show()
-        //             }
-        //             else if (data.forter_decision == "DECLINE") {
-        //                 $("#login_decline").show()
-        //             }
-        //             else if (data.forter_decision == "VERIFICATION_REQUIRED") {
+            //         $("#forter_decision_approve").show()
+            //     }
+            //     else if (data.forter_decision == "DECLINE") {
+            //         $("#login_decline").show()
+            //     }
+            //     else if (data.forter_decision == "VERIFICATION_REQUIRED") {
 
         //                 localStorage.setItem("factors", JSON.stringify(data.factors))
 
         //                 $("#choose_factor").show()
         //             }
         //         }
-        //     })
+        })
         // }
       }
 

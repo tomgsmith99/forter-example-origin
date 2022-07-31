@@ -137,6 +137,8 @@ addEventListener('fetch', event => {
 
   if (url == "https://f-test-cf.tomgsmith.com/login-1") {}
 
+  if (request.method === 'POST' && url.includes('login-1')) {}
+
   else {
 
     if (url.includes('form')) {

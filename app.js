@@ -61,3 +61,9 @@ app.get('/login-1', (req, res) => {
 
 	res.render ('login.html', obj)
 })
+
+app.post('/login-1', (req, res) => {
+
+	console.log("the username is: " + req.body.username)
+})
+
