@@ -129,6 +129,12 @@ addEventListener('fetch', event => {
   const { request } = event;
   const { url } = request;
 
+  console.log("the url is:")
+
+  console.dir(url)
+
+  if (url == "https://f-test-cf.tomgsmith.com/") {}
+
   if (url.includes('form')) {
     return event.respondWith(rawHtmlResponse(someForm));
   }
