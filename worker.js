@@ -41,7 +41,6 @@ async function readRequestBody(request) {
   }
 }
 
-// simulate che
 async function evaluate_password(username, password) {
   const { headers } = request;
   const contentType = headers.get('content-type') || '';

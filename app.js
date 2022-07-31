@@ -46,7 +46,7 @@ app.get('/favicon.ico', (req, res) => {
 	return
 })
 
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
 
 	obj = {
 		FORTER_EU: process.env.FORTER_EU,
