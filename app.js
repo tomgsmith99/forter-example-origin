@@ -47,11 +47,16 @@ app.get('/favicon.ico', (req, res) => {
 })
 
 app.get('/', (req, res) => {
+	res.render ('index.html', obj)
+})
+
+app.get('/login-1', (req, res) => {
 
 	obj = {
 		FORTER_EU: process.env.FORTER_EU,
-		FORTER_SITE_ID: process.env.FORTER_SITE_ID
+		FORTER_SITE_ID: process.env.FORTER_SITE_ID,
+		use_case: "login-1"
 	}
 
-	res.render ('index.html', obj)
+	res.render ('login.html', obj)
 })
