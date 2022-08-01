@@ -137,7 +137,18 @@ addEventListener('fetch', event => {
 
   if (url == "https://f-test-cf.tomgsmith.com/login-1") {}
 
-  if (request.method === 'POST' && url.includes('login-1')) {}
+  if (request.method === 'POST' && url.includes('login-1')) {
+
+    const originalResponse = await fetch(request);
+
+    if (originalResponse.status == 200) {
+      let response = new Response(originalResponse.body, {
+        status: 403,
+        statusText: 'some message',
+        headers: originalResponse.headers,
+      });
+    }
+  }
 
   else {
 
