@@ -62,7 +62,7 @@ app.get('/login-1', (req, res) => {
 	res.render ('login.html', obj)
 })
 
-app.post('/login-1', (req, res) => {
+app.post('/login', (req, res) => {
 
 	if (req.body.username == "guy_pearce") {
 		res.sendStatus(401)

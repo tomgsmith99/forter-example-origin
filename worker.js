@@ -45,15 +45,24 @@ async function handleRequest(request) {
   const reqBody = await readRequestBody(request);
   const { url } = request;
 
+  console.log("in the handleRequest func")
+
+  const originalResponse = await fetch(request);
+
+  console.log("the status is: " + originalResponse.status)
+
   // const retBody = `The request body sent in was ${reqBody}`;
 
   const body_json = JSON.parse(reqBody);
+
+  // const originalResponse = await fetch(request);
+
+  console.log("the status is: " + originalResponse.status)
 
   const retBody = `The username sent in was ${body_json.username}`;
 
   if (request.method === 'POST' && url.includes('login')) {
 
-    const originalResponse = await fetch(request);
 
     if (originalResponse.status == 200) {
       let response = new Response(originalResponse.body, {
@@ -79,17 +88,21 @@ addEventListener('fetch', event => {
 
   console.dir(url)
 
-  if (url == "https://f-test-cf.tomgsmith.com/login-1") {}
+  if (request.method == "GET") {
+
+    if (url == "https://f-test-cf.tomgsmith.com/login-1") {}
+    else {
+      return event.respondWith(new Response(`The request was a GET`));      
+    }
+
+  }
 
   else {
 
-    if (url.includes('form')) {
-      return event.respondWith(rawHtmlResponse(someForm));
-    }
     if (request.method === 'POST') {
+
+      console.log("the request method is POST")
       return event.respondWith(handleRequest(request));
-    } else if (request.method === 'GET') {
-      return event.respondWith(new Response(`The request was a GET`));
     }
   }
 
