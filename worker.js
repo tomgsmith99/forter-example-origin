@@ -147,6 +147,9 @@ addEventListener('fetch', event => {
         statusText: 'some message',
         headers: originalResponse.headers,
       });
+
+      return response;
+
     }
   }
 
