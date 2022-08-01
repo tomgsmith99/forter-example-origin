@@ -64,6 +64,13 @@ app.get('/login-1', (req, res) => {
 
 app.post('/login-1', (req, res) => {
 
+	if (req.body.username == "guy_pearce") {
+		res.sendStatus(401)
+	}
+	else {
+		res.sendStatus(200)
+	}
+
 	console.log("the username is: " + req.body.username)
 })
 
