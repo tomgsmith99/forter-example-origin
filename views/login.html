@@ -41,7 +41,7 @@
         //         "forter_token": localStorage.getItem("forter_token")
         // })
         $.post(
-            "/login", d)
+            "/login", JSON.stringify(d))
         .done(function( data ) {
 
           console.log("response:")
