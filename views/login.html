@@ -6,15 +6,16 @@
 
     <script>
 
-        document.addEventListener('ftr:tokenReady', function(evt) {
-            var token = evt.detail
+      document.addEventListener('ftr:tokenReady', function(evt) {
 
-            console.log("the forter token is: ")
+        var token = evt.detail
 
-            console.log(token)
+        console.log("the forter token is: ")
 
-            localStorage.setItem("forter_token", token)
-        })
+        console.log(token)
+
+        localStorage.setItem("forter_token", token)
+      })
 
     </script>
 
@@ -34,37 +35,11 @@
         })
         .done(function( data ) {
 
-            console.log("response:")
+          console.log("response:")
 
-            // console.dir(data)
+          console.dir(data)
 
-            // $("#login_form").hide()
-
-            // if (data.error) {
-            //     $("#login_error").show()
-            // }
-            // else {
-
-            //     if (data.forter_decision == "APPROVE") {
-
-            //         $("#welcome_login_username").html(user.first_name)
-
-            //         $("#login_success").show()
-
-            //         $("#forter_decision_approve").show()
-            //     }
-            //     else if (data.forter_decision == "DECLINE") {
-            //         $("#login_decline").show()
-            //     }
-            //     else if (data.forter_decision == "VERIFICATION_REQUIRED") {
-
-        //                 localStorage.setItem("factors", JSON.stringify(data.factors))
-
-        //                 $("#choose_factor").show()
-        //             }
-        //         }
         })
-        // }
       }
 
     </script>
@@ -108,25 +83,24 @@
   <table border = 1>
 
     <tr style="font-weight: bold;">
-      <td>username</td><td>authn result</td><td>forter decision</td>
+      <td>username</td><td>authn result</td><td>forter decision</td><td>UX</td>
     </tr>
     <tr>
-      <td>lois_lane</td><td>200</td><td>approve</td>
+      <td>lois_lane</td><td>200</td><td>approve</td><td>OK</td>
     </tr>
     <tr>
-      <td>clark_kent</td><td>200</td><td>verification required</td>
-    </tr>
-
-    <tr>
-      <td>lex_luthor</td><td>200</td><td>decline</td>
+      <td>clark_kent</td><td>200</td><td>verification required</td><td>MFA</td>
     </tr>
 
     <tr>
-      <td>guy_pearce</td><td>401</td><td>N/A</td>
+      <td>lex_luthor</td><td>200</td><td>decline</td><td>401</td>
+    </tr>
+
+    <tr>
+      <td>guy_pearce</td><td>401</td><td>N/A</td><td>401</td>
     </tr>
 
   </table>
-
 
   <script type="text/javascript" id="{{FORTER_SITE_ID}}">
       (function () {
