@@ -28,11 +28,20 @@
 
         console.log(username)
 
+        const d = {
+          username: username,
+          forter_token: localStorage.getItem("forter_token")
+        }
+
+        console.dir(d)
+
+        // $.post(
+        //     "/login", {
+        //         "username": username,
+        //         "forter_token": localStorage.getItem("forter_token")
+        // })
         $.post(
-            "/login", {
-                "username": username,
-                "forter_token": localStorage.getItem("forter_token")
-        })
+            "/login", d)
         .done(function( data ) {
 
           console.log("response:")
