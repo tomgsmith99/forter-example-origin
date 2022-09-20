@@ -30,8 +30,8 @@
 
         $.post(
             "/login", {
-                username: username,
-                forter_token: localStorage.getItem("forter_token")
+                "username": username,
+                "forter_token": localStorage.getItem("forter_token")
         })
         .done(function( data ) {
 
