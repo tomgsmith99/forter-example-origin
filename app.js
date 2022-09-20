@@ -62,6 +62,8 @@ app.post('/login', (req, res) => {
 
 	console.log(typeof req.body)
 
+	console.log("this is the request body that was submitted:")
+
 	console.dir(req.body)
 
 	if (req.body.username == "guy.pearce") {

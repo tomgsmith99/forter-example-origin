@@ -11,11 +11,14 @@ async function readRequestBody(request) {
 
   const contentType = headers.get('content-type') || ''
 
+  console.log("the contentType is: " + contentType)
+
   if (contentType.includes('application/json')) {
 
-    let the_body = JSON.stringify(await request.json())
+    let the_body = await request.json()
 
-    return JSON.stringify(await request.json());
+    return the_body
+
   } else if (contentType.includes('application/text')) {
     return request.text();
   } else if (contentType.includes('text/html')) {
@@ -27,9 +30,13 @@ async function readRequestBody(request) {
       body[entry[0]] = entry[1];
     }
 
+    console.log("the content type is form.")
+
     the_body = JSON.stringify(body)
 
-    return JSON.stringify(body);
+    console.log(the_body)
+
+    return JSON.stringify(body)
   } else {
     // Perhaps some other type of data was submitted in the form
     // like an image, or some other binary data.
@@ -57,14 +64,19 @@ async function handleRequest(request) {
 
   const reqBody = await readRequestBody(request)
 
+  console.log("after parsing, the request body is: ")
+  console.log(reqBody)
+
   const { url } = request
 
   const body_obj = JSON.parse(reqBody)
 
   const username = body_obj.username
 
+  console.log("the username is: " + username)
+
   const modifiedRequest = new Request(url, {
-    body: reqBody,
+    body: { foo: "bar" },
     headers: request.headers,
     method: request.method,
     redirect: request.redirect
