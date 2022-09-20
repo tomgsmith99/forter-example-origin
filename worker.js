@@ -116,7 +116,12 @@ async function handleRequest(request) {
       return new Response('', { status: 401 })
     }
     else {
-      return new Response(forter_response)      
+      return new Response(JSON.stringify(forter_response_obj), { 
+        status: 200,
+        headers: {
+          'content-type': 'application/json',
+        }
+      })
     }
   }
   else {
