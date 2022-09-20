@@ -24,24 +24,12 @@
     <script>
       function login() {
 
-        const username = $("#username").val()
-
-        console.log(username)
-
-        const d = {
-          username: username,
-          forter_token: localStorage.getItem("forter_token")
-        }
-
-        console.dir(d)
-
-        // $.post(
-        //     "/login", {
-        //         "username": username,
-        //         "forter_token": localStorage.getItem("forter_token")
-        // })
         $.post(
-            "/login", JSON.stringify(d))
+            "/login", { 
+              username: $("#username").val(),
+              forter_token: localStorage.getItem("forter_token")
+            }
+        )
         .done(function( data ) {
 
           console.log("response:")
