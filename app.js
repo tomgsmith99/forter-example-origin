@@ -22,8 +22,6 @@ app.use(express.json())
 
 app.use(express.urlencoded({extended: true}))
 
-app.use(express.static('public'))
-
 nunjucks
     .configure('views', {
         autoescape: true,
@@ -63,6 +61,8 @@ app.get('/login-1', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
+
+	console.log(typeof req.body)
 
 	console.dir(req.body)
 
