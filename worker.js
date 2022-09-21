@@ -53,7 +53,7 @@ async function get_ip(username, ip_address) {
     return '0.0.0.2'
   }
   else if (username.includes('verify') || username.includes('clark.kent')) {
-    return '0.0.0.3'
+    return '0.0.0.4'
   }
   else {
     return ip_address
@@ -76,7 +76,7 @@ async function handleRequest(request) {
   console.log("the username is: " + username)
 
   const modifiedRequest = new Request(url, {
-    body: { foo: "bar" },
+    body: reqBody,
     headers: request.headers,
     method: request.method,
     redirect: request.redirect

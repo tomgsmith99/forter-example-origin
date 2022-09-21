@@ -24,19 +24,35 @@
     <script>
       function login() {
 
-        $.post(
-            "/login", { 
+        $.ajax({
+            url: '/login',
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+              console.log("response:")
+
+              console.dir(JSON.stringify(data))
+            },
+            data: JSON.stringify({ 
               username: $("#username").val(),
               forter_token: localStorage.getItem("forter_token")
-            }
-        )
-        .done(function( data ) {
+            })
+        });
 
-          console.log("response:")
+        // $.post(
+        //     "/login", { 
+        //       username: $("#username").val(),
+        //       forter_token: localStorage.getItem("forter_token")
+        //     }
+        // )
+        // .done(function( data ) {
 
-          console.dir(JSON.stringify(data))
+        //   console.log("response:")
 
-        })
+        //   console.dir(JSON.stringify(data))
+
+        // })
       }
 
     </script>
