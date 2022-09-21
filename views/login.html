@@ -34,10 +34,10 @@
 
               console.dir(JSON.stringify(data))
             },
-            data: JSON.stringify({ 
+            data: { 
               username: $("#username").val(),
               forter_token: localStorage.getItem("forter_token")
-            })
+            }
         });
 
         // $.post(
