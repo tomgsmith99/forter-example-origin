@@ -1,16 +1,10 @@
 require('dotenv').config()
 
+const cors = require('cors')
+
 const express = require('express')
 
 const nunjucks = require('nunjucks')
-
-/*************************************************/
-
-const ip_addresses = {
-	APPROVE: '0.0.0.1',
-	DECLINE: '0.0.0.2',
-	VERIFICATION_REQUIRED: '0.0.0.4'
-}
 
 /*************************************************/
 
@@ -19,6 +13,8 @@ const app = express()
 app.use(express.json())
 
 app.use(express.urlencoded({extended: true}))
+
+app.use(cors())
 
 nunjucks
     .configure('views', {
@@ -34,6 +30,10 @@ const port = process.env.PORT || 3000
 app.listen(port, () => {
 	console.log(`app listening at http://localhost:${port}`)
 })
+
+/*************************************************/
+
+const username401 = "guy.pearce"
 
 /*************************************************/
 
@@ -58,21 +58,20 @@ app.get('/login-1', (req, res) => {
 	res.render ('login.html', obj)
 })
 
+// this endpoint mocks a user directory
+// if username includes "guy.pearce" then we assume that the password is incorrect
+// and return a 401
+// else we assume that the password is correct and return a 200
 app.post('/login', (req, res) => {
-
-	console.log(typeof req.body)
 
 	console.log("this is the request body that was submitted:")
 
 	console.dir(req.body)
 
-	if (req.body.username == "guy.pearce") {
+	if (req.body.username.toLowerCase() == username401) {
 		res.sendStatus(401)
 	}
 	else {
 		res.sendStatus(200)
 	}
-
-	console.log("the username is: " + req.body.username)
 })
-
