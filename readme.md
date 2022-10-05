@@ -15,11 +15,13 @@ The back end authentication service responds with a 200 unless the username equa
 
 The password field is ignored.
 
-The Cloudflare worker (with call out to Forter) designed to work in this flow is available here.
+The Cloudflare worker (with call out to Forter) designed to work in this flow is available [here](https://github.com/tomgsmith99/forter-cloudflare).
 
 ## Prerequisites ##
 
 A Forter account
+
+## Components ##
 
 ### NodeJS app ###
 
@@ -27,7 +29,7 @@ A Forter account
 
 * Back end: the back end represents the origin and user directory. 
 
-## Setup: NodeJS app ##
+## Setup ##
 
 Copy the `.env_example` file to `.env`
 
@@ -47,4 +49,4 @@ You should be able to "log in" as any of the test users (the password field is i
 
 Look for results in the console network tab.
 
-All users will result in a 200 response, except for Guy Pearce, who will return a 401.
+All users will result in a 200 response, except for USER_WRONG_PASSWORD, who will return a 401.
