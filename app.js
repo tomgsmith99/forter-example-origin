@@ -59,8 +59,8 @@ app.get('/login-1', (req, res) => {
 })
 
 // this endpoint mocks a user directory
-// if username includes "guy.pearce" then we assume that the password is incorrect
-// and return a 401
+// if username is the USER_WRONG_PASSWORD value
+// then we return a 401
 // else we assume that the password is correct and return a 200
 app.post('/login', (req, res) => {
 
@@ -68,7 +68,7 @@ app.post('/login', (req, res) => {
 
 	console.dir(req.body)
 
-	if (req.body.username.toLowerCase() == username401) {
+	if (req.body.username == process.env.USER_WRONG_PASSWORD) {
 		res.sendStatus(401)
 	}
 	else {
